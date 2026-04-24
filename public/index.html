@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Notification Dashboard</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="masthead">
+        <div>
+          <p>Expo Push Service</p>
+          <h1>Notification Dashboard</h1>
+        </div>
+        <div id="health" class="health pending">Checking DB</div>
+      </header>
+
+      <section class="layout">
+        <aside class="panel">
+          <div class="panel-title">
+            <h2>Send Push</h2>
+            <span id="sendStatus"></span>
+          </div>
+
+          <form id="pushForm">
+            <label>
+              Audience
+              <select name="mode" id="mode">
+                <option value="all">Send to all active tokens</option>
+                <option value="selected">Send to selected tokens</option>
+              </select>
+            </label>
+
+            <label>
+              Title
+              <input name="title" value="Campus update" required />
+            </label>
+
+            <label>
+              Message
+              <textarea name="body" rows="4" required>Mika Santos has arrived on campus.</textarea>
+            </label>
+
+            <button type="submit">Send notification</button>
+          </form>
+        </aside>
+
+        <section class="panel table-panel">
+          <div class="panel-title">
+            <h2>Expo Push Tokens</h2>
+            <button class="secondary" id="refreshButton" type="button">Refresh</button>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Parent</th>
+                  <th>Student</th>
+                  <th>Platform</th>
+                  <th>Token</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="tokensTable"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <section class="panel table-panel">
+        <div class="panel-title">
+          <h2>Recent Push Logs</h2>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Audience</th>
+                <th>Recipient</th>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Ticket</th>
+              </tr>
+            </thead>
+            <tbody id="logsTable"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
